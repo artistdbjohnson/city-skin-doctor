@@ -1,5 +1,25 @@
 # City Skin Doctor — Path A pitch (dglxss)
 
-Design study rebuild of [cityskindoctor.co.uk](https://www.cityskindoctor.co.uk/). Not affiliated.
+Design study of [cityskindoctor.co.uk](https://www.cityskindoctor.co.uk/). Not affiliated. Exact published copy, colours, and plates. Footer credit is dglxss only.
 
-See `DESIGN_MEETING.md` for craft locks.
+Craft: Motionsites neo-museum, remapped to a regulated medical aesthetics clinic. Opening is the HIW | CQC twin-badge pathway (session once; skipped for hash links and reduced motion).
+
+## Develop
+
+```bash
+npm install
+npm run dev
+```
+
+## Deploy on Vercel
+
+Suggested project name: `city-skin-doctor`.
+
+1. Import the GitHub repository.
+2. Framework preset: Next.js. Root directory: repository root.
+3. No environment variables required.
+4. `vercel.json` sets `cleanUrls: true` and `trailingSlash: false`.
+
+## Locks
+
+EN default with a PT twin, dark and light themes, both persisted. Sticky nav height is the scroll offset for section hashes.
