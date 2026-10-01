@@ -10,7 +10,12 @@ const inter = Inter({
   variable: "--font-inter",
 });
 
+const siteUrl = process.env.VERCEL_URL
+  ? `https://${process.env.VERCEL_URL}`
+  : "http://localhost:3000";
+
 export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
   title: "Medical, Surgical & Cosmetic Clinic in Cardiff | City Skin Doctor",
   description:
     "City Skin Doctor: Premier Medical, Aesthetic, Surgery, Laser & Plastic Surgery Clinic in London & Cardiff. Expert skincare & cosmetic treatments.",
