@@ -90,7 +90,7 @@ export function Site() {
               </div>
             </div>
             <figure>
-              <Plate src={media.doctor} alt={t.doctorAlt} ratio="4-3" priority />
+              <Plate src={media.doctor} alt={t.doctorAlt} ratio="4-3" position="center 42%" priority />
               <figcaption className="caption">
                 <strong>{t.heroCaption}</strong>
                 <span>{t.heroRole}</span>
@@ -114,7 +114,8 @@ export function Site() {
                     <Plate
                       src={media[item.image]}
                       alt={item.alt}
-                      ratio={item.image === "hair" ? "3-4" : "16-10"}
+                      ratio="4-3"
+                      position={item.image === "hair" ? "center 18%" : "center"}
                       sizes="(max-width: 860px) 100vw, 33vw"
                     />
                     <div className="card-pad">
@@ -175,7 +176,8 @@ export function Site() {
                     <Plate
                       src={serviceImage[service.id as keyof typeof serviceImage]}
                       alt={service.alt}
-                      ratio={service.id === "hair" || service.id === "skin" ? "3-4" : "16-10"}
+                      ratio="4-3"
+                      position={service.id === "hair" ? "center 18%" : "center 40%"}
                       fit={service.id === "weight" ? "contain" : "cover"}
                       sizes="(max-width: 860px) 100vw, 30vw"
                     />
@@ -411,12 +413,15 @@ export function Site() {
                     {t.facebook}
                   </a>
                 </div>
-                <Plate
-                  src={media.skin}
-                  alt={t.services[4].alt}
-                  ratio="16-10"
-                  sizes="(max-width: 860px) 100vw, 36vw"
-                />
+                <div className="contact-plate">
+                  <Plate
+                    src={media.skin}
+                    alt={t.services[4].alt}
+                    ratio="16-10"
+                    position="center 30%"
+                    sizes="(max-width: 860px) 100vw, 36vw"
+                  />
+                </div>
               </aside>
             </div>
           </div>
