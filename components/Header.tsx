@@ -64,6 +64,7 @@ export function Header() {
           </button>
           <a className="book" href={bookingUrl} target="_blank" rel="noreferrer">
             {t.book}
+            <span className="sr-only">, {t.newTab}</span>
           </a>
         </div>
       </div>

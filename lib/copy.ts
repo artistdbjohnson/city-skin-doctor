@@ -3,6 +3,7 @@ export type Locale = "en" | "pt";
 const en = {
   skip: "Skip to content",
   skipOpen: "Skip introduction",
+  newTab: "opens in a new tab",
   openLabel: "Healthcare Inspectorate Wales and Care Quality Commission pathway",
   nav: [
     { href: "#clinic", label: "Clinic" },
@@ -182,6 +183,7 @@ const en = {
 const pt: typeof en = {
   skip: "Saltar para o conteúdo",
   skipOpen: "Saltar a introdução",
+  newTab: "abre num novo separador",
   openLabel: "Percurso Healthcare Inspectorate Wales e Care Quality Commission",
   nav: [
     { href: "#clinic", label: "Clínica" },

@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useLayoutEffect, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { media } from "@/lib/media";
 import { usePrefs } from "@/components/prefs";
@@ -27,10 +27,14 @@ function markSeen() {
   }
   document.documentElement.dataset.open = "done";
   document.body.style.overflow = "";
+  document.querySelector(".site-header")?.removeAttribute("inert");
+  document.querySelector("main")?.removeAttribute("inert");
+  document.querySelector(".site-footer")?.removeAttribute("inert");
 }
 
 export function Opening() {
   const { t } = usePrefs();
+  const skipRef = useRef<HTMLButtonElement>(null);
   const [phase, setPhase] = useState<"seals" | "paths" | "exit" | "done">("seals");
 
   useLayoutEffect(() => {
@@ -61,6 +65,14 @@ export function Opening() {
       setPhase("done");
     };
     window.addEventListener("keydown", onKey);
+    skipRef.current?.focus();
+
+    const background = [
+      document.querySelector(".site-header"),
+      document.querySelector("main"),
+      document.querySelector(".site-footer"),
+    ];
+    background.forEach((node) => node?.setAttribute("inert", ""));
 
     return () => {
       window.clearTimeout(toPaths);
@@ -68,6 +80,7 @@ export function Opening() {
       window.clearTimeout(toDone);
       window.removeEventListener("keydown", onKey);
       document.body.style.overflow = previousOverflow;
+      background.forEach((node) => node?.removeAttribute("inert"));
     };
   }, []);
 
@@ -93,7 +106,7 @@ export function Opening() {
       aria-hidden={phase === "done"}
       aria-label={t.openLabel}
     >
-      <button type="button" className="open-skip" onClick={finish}>
+      <button type="button" className="open-skip" onClick={finish} ref={skipRef}>
         {t.skipOpen}
       </button>
       <div className="open-inner">

@@ -2,6 +2,7 @@
 
 import { useEffect } from "react";
 import Image from "next/image";
+import { External } from "@/components/External";
 import { Header } from "@/components/Header";
 import { Opening } from "@/components/Opening";
 import { usePrefs } from "@/components/prefs";
@@ -54,7 +55,7 @@ export function Site() {
     <>
       <Opening />
       <Header />
-      <main id="hero">
+      <main id="hero" tabIndex={-1}>
         <section className="hero" aria-labelledby="hero-title">
           <div className="shell hero-grid">
             <div>
@@ -67,9 +68,9 @@ export function Site() {
               <hr className="rule" />
               <p className="lede">{t.heroLede}</p>
               <div className="hero-actions">
-                <a className="book" href={bookingUrl} target="_blank" rel="noreferrer">
+                <External className="book" href={bookingUrl}>
                   {t.bookLong}
-                </a>
+                </External>
                 <a className="text-btn" href="#services">
                   {t.servicesEyebrow}
                 </a>
@@ -123,9 +124,9 @@ export function Site() {
                       <h3>{item.k}</h3>
                       <p>{item.d}</p>
                       <div className="inline-actions">
-                        <a className="book" href={bookingUrl} target="_blank" rel="noreferrer">
+                        <External className="book" href={bookingUrl}>
                           {t.book}
-                        </a>
+                        </External>
                       </div>
                     </div>
                   </article>
@@ -155,17 +156,12 @@ export function Site() {
                         <h3>{t.laserTitle}</h3>
                         <p>{t.laserBody}</p>
                         <div className="inline-actions">
-                          <a className="book" href={bookingUrl} target="_blank" rel="noreferrer">
+                          <External className="book" href={bookingUrl}>
                             {t.book}
-                          </a>
-                          <a
-                            className="text-btn"
-                            href="https://www.cityskindoctor.co.uk/laser-hair-removal"
-                            target="_blank"
-                            rel="noreferrer"
-                          >
+                          </External>
+                          <External className="text-btn" href="https://www.cityskindoctor.co.uk/laser-hair-removal">
                             {t.readClinic}
-                          </a>
+                          </External>
                         </div>
                       </div>
                     </div>
@@ -185,12 +181,12 @@ export function Site() {
                       <h3>{service.title}</h3>
                       <p>{service.body}</p>
                       <div className="inline-actions">
-                        <a className="book" href={bookingUrl} target="_blank" rel="noreferrer">
+                        <External className="book" href={bookingUrl}>
                           {t.book}
-                        </a>
-                        <a className="text-btn" href={service.href} target="_blank" rel="noreferrer">
+                        </External>
+                        <External className="text-btn" href={service.href}>
                           {t.readClinic}
-                        </a>
+                        </External>
                       </div>
                     </div>
                   </article>
@@ -211,12 +207,12 @@ export function Site() {
                   <h2 id="clinic-title">{t.clinicTitle}</h2>
                   <p>{t.clinicBody}</p>
                   <div className="inline-actions">
-                    <a className="book" href={bookingUrl} target="_blank" rel="noreferrer">
+                    <External className="book" href={bookingUrl}>
                       {t.book}
-                    </a>
-                    <a className="text-btn" href={clinicUrl} target="_blank" rel="noreferrer">
+                    </External>
+                    <External className="text-btn" href={clinicUrl}>
                       {t.clinicLink}
-                    </a>
+                    </External>
                   </div>
                 </div>
               </article>
@@ -231,9 +227,9 @@ export function Site() {
                   <p>{t.academyBody}</p>
                   <p className="note">{t.academyCpd}</p>
                   <div className="inline-actions">
-                    <a className="book" href={academyUrl} target="_blank" rel="noreferrer">
+                    <External className="book" href={academyUrl}>
                       {t.academyLink}
-                    </a>
+                    </External>
                   </div>
                 </div>
               </article>
@@ -253,9 +249,9 @@ export function Site() {
                 <h2 id="products-title">{t.productsTitle}</h2>
                 <p className="lede">{t.productsLede}</p>
                 <div className="inline-actions">
-                  <a className="book" href={storeUrl} target="_blank" rel="noreferrer">
+                  <External className="book" href={storeUrl}>
                     {t.store}
-                  </a>
+                  </External>
                 </div>
                 <div className="partners">
                   <p className="eyebrow">{t.cooperate}</p>
@@ -318,17 +314,13 @@ export function Site() {
                 <figure className="seal">
                   <Image src={media.hiw} alt="" width={444} height={113} />
                   <figcaption>
-                    <a href="https://www.hiw.org.uk/" target="_blank" rel="noreferrer">
-                      {t.hiwLink}
-                    </a>
+                    <External href="https://www.hiw.org.uk/">{t.hiwLink}</External>
                   </figcaption>
                 </figure>
                 <figure className="seal">
                   <Image src={media.cqc} alt="" width={135} height={64} />
                   <figcaption>
-                    <a href="https://www.cqc.org.uk/" target="_blank" rel="noreferrer">
-                      {t.cqcLink}
-                    </a>
+                    <External href="https://www.cqc.org.uk/">{t.cqcLink}</External>
                   </figcaption>
                 </figure>
               </div>
@@ -397,21 +389,17 @@ export function Site() {
                 <p style={{ marginTop: "0.8rem" }}>{t.contactLede}</p>
                 <p className="note">{t.caveat}</p>
                 <div className="inline-actions">
-                  <a className="book" href={bookingUrl} target="_blank" rel="noreferrer">
+                  <External className="book" href={bookingUrl}>
                     {t.bookLong}
-                  </a>
+                  </External>
                 </div>
                 <div className="meta-line">
                   <span>{t.emailLabel}</span>
                   <a href={`mailto:${email}`}>{email}</a>
                 </div>
                 <div className="socials">
-                  <a href={instagramUrl} target="_blank" rel="noreferrer">
-                    {t.instagram}
-                  </a>
-                  <a href={facebookUrl} target="_blank" rel="noreferrer">
-                    {t.facebook}
-                  </a>
+                  <External href={instagramUrl}>{t.instagram}</External>
+                  <External href={facebookUrl}>{t.facebook}</External>
                 </div>
                 <div className="contact-plate">
                   <Plate
