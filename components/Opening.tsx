@@ -6,6 +6,13 @@ import { media } from "@/lib/media";
 import { usePrefs } from "@/components/prefs";
 
 const SESSION_KEY = "csd-pathway-open";
+const PATHS_AT_MS = 2000;
+const EXIT_AT_MS = 3700;
+const DONE_AT_MS = 4400;
+
+function armRule() {
+  document.documentElement.dataset.rule = "draw";
+}
 
 function shouldSkip() {
   const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -26,6 +33,7 @@ function markSeen() {
     /* ignore */
   }
   document.documentElement.dataset.open = "done";
+  armRule();
   document.body.style.overflow = "";
   document.querySelector(".site-header")?.removeAttribute("inert");
   document.querySelector("main")?.removeAttribute("inert");
@@ -35,15 +43,31 @@ function markSeen() {
 export function Opening() {
   const { t } = usePrefs();
   const skipRef = useRef<HTMLButtonElement>(null);
+  const timers = useRef<number[]>([]);
   const [phase, setPhase] = useState<"seals" | "paths" | "exit" | "done">("seals");
+
+  function clearTimers() {
+    timers.current.forEach((id) => window.clearTimeout(id));
+    timers.current = [];
+  }
+
+  function finish() {
+    clearTimers();
+    markSeen();
+    setPhase("done");
+  }
 
   useLayoutEffect(() => {
     if (shouldSkip()) {
       document.documentElement.dataset.open = "skip";
+      armRule();
       setPhase("done");
       return;
     }
     document.documentElement.dataset.open = "play";
+    if (document.documentElement.dataset.rule !== "draw") {
+      document.documentElement.dataset.rule = "wait";
+    }
   }, []);
 
   useEffect(() => {
@@ -52,17 +76,21 @@ export function Opening() {
     const previousOverflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
 
-    const toPaths = window.setTimeout(() => setPhase("paths"), 1600);
-    const toExit = window.setTimeout(() => setPhase("exit"), 3300);
-    const toDone = window.setTimeout(() => {
-      markSeen();
-      setPhase("done");
-    }, 4100);
+    timers.current = [
+      window.setTimeout(() => setPhase("paths"), PATHS_AT_MS),
+      window.setTimeout(() => {
+        armRule();
+        setPhase("exit");
+      }, EXIT_AT_MS),
+      window.setTimeout(() => {
+        markSeen();
+        setPhase("done");
+      }, DONE_AT_MS),
+    ];
 
     const onKey = (event: KeyboardEvent) => {
       if (event.key !== "Escape") return;
-      markSeen();
-      setPhase("done");
+      finish();
     };
     window.addEventListener("keydown", onKey);
     skipRef.current?.focus();
@@ -75,19 +103,12 @@ export function Opening() {
     background.forEach((node) => node?.setAttribute("inert", ""));
 
     return () => {
-      window.clearTimeout(toPaths);
-      window.clearTimeout(toExit);
-      window.clearTimeout(toDone);
+      clearTimers();
       window.removeEventListener("keydown", onKey);
       document.body.style.overflow = previousOverflow;
       background.forEach((node) => node?.removeAttribute("inert"));
     };
   }, []);
-
-  function finish() {
-    markSeen();
-    setPhase("done");
-  }
 
   const className = [
     "pathway-open",

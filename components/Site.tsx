@@ -31,7 +31,7 @@ export function Site() {
   const { t } = usePrefs();
 
   useEffect(() => {
-    const nodes = Array.from(document.querySelectorAll(".reveal"));
+    const nodes = Array.from(document.querySelectorAll(".reveal, .ledger"));
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     if (reduce) {
       nodes.forEach((node) => node.classList.add("in"));
@@ -279,16 +279,18 @@ export function Site() {
                   <span>{t.heroRole}</span>
                 </figcaption>
               </figure>
-              <div className="reveal">
-                <p className="eyebrow">{t.doctorEyebrow}</p>
-                <h2 id="doctor-title">{t.doctorTitle}</h2>
-                <p className="lede" style={{ marginTop: "1rem" }}>
-                  {t.doctorP1}
-                </p>
-                <p className="lede" style={{ marginTop: "0.9rem" }}>
-                  {t.doctorP2}
-                </p>
-                <ul className="creds">
+              <div>
+                <div className="reveal">
+                  <p className="eyebrow">{t.doctorEyebrow}</p>
+                  <h2 id="doctor-title">{t.doctorTitle}</h2>
+                  <p className="lede" style={{ marginTop: "1rem" }}>
+                    {t.doctorP1}
+                  </p>
+                  <p className="lede" style={{ marginTop: "0.9rem" }}>
+                    {t.doctorP2}
+                  </p>
+                </div>
+                <ul className="creds ledger">
                   {t.creds.map((item, index) => (
                     <li key={item}>
                       <span>0{index + 1}</span>

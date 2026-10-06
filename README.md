@@ -2,7 +2,7 @@
 
 Design study of [cityskindoctor.co.uk](https://www.cityskindoctor.co.uk/). Not affiliated. Exact published copy, colours, and plates. Footer credit is dglxss only.
 
-Craft: Motionsites neo-museum, remapped to a regulated medical aesthetics clinic. Opening is the HIW | CQC twin-badge pathway (session once; skipped for hash links and reduced motion).
+Craft: Motionsites neo-museum, remapped to a regulated medical aesthetics clinic. Opening is the HIW | CQC twin-badge pathway (session once; skipped for hash links and reduced motion). Motion pass: that open stays the only introduction; the hero rule inscribes once, and the credential list settles once in view. See `docs/motion-meeting.md`.
 
 ## Develop
 
