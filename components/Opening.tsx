@@ -78,10 +78,7 @@ export function Opening() {
 
     timers.current = [
       window.setTimeout(() => setPhase("paths"), PATHS_AT_MS),
-      window.setTimeout(() => {
-        armRule();
-        setPhase("exit");
-      }, EXIT_AT_MS),
+      window.setTimeout(() => setPhase("exit"), EXIT_AT_MS),
       window.setTimeout(() => {
         markSeen();
         setPhase("done");

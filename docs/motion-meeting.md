@@ -35,14 +35,14 @@ A second splash, a type rewrite of “Medical, Surgical & Cosmetic.”, or a rep
 | Partner-logo marquee | No | No | No | No | — | Reject. Carnival, and it moves published marks. |
 | Regulation-section seal replay | — | No | — | No | Yes | Reject. Axiom asked for an echo of the open. Reed: that restages the introduction. |
 | Light refine of the pathway open: drop the scale, let the seals rest, then the pathways | Yes | Yes | Yes | Yes | Yes | Pass. Same open. Not a new one. |
-| Hero crimson rule, once, ease-out, as the paper leaves | Yes | Yes | Yes | Yes | Yes | **Win.** One editorial line. Type, colour, and length unchanged at rest. |
+| Hero crimson rule, once, ease-out, when the paper has left | Yes | Yes | Yes | Yes | Yes | **Win.** One editorial line. Type, colour, and length unchanged at rest. |
 | Credential ledger, once, when the doctor section arrives | Yes | Yes | Yes | Yes | Abstain | **Win.** Five published lines, a short stagger, then still. |
 
 ## Winner
 
 Two gestures, plus a light refine of the open. Nothing else.
 
-1. **Hero rule.** The existing crimson rule under the hero title inscribes once, from the left, 0.72s, ease-out `cubic-bezier(0.22, 1, 0.36, 1)`. It starts as the pathway paper leaves, or immediately when the open is skipped. Once per page load. It is not an introduction, so a return visit in the same session still gets the rule after the open is suppressed. `prefers-reduced-motion: reduce` leaves the rule at full length, 2.4rem, with no animation.
+1. **Hero rule.** The existing crimson rule under the hero title inscribes once, from the left, 0.72s, ease-out `cubic-bezier(0.22, 1, 0.36, 1)`. It starts when the pathway paper has left, or immediately when the open is skipped. Once per page load. It is not an introduction, so a return visit in the same session still gets the rule after the open is suppressed. `prefers-reduced-motion: reduce` leaves the rule at full length, 2.4rem, with no animation.
 2. **Credential ledger.** The five published lines under Dr Ebrahim Feghenaby (MD 1997 through Founder & Medical Director, and the PT twin) settle once when that list meets the viewport. 0.5s, same curve, 4px, 70ms between lines, then the observer disconnects. Reduced motion shows the list at rest.
 
 Open refine, still the only introduction:
@@ -50,8 +50,8 @@ Open refine, still the only introduction:
 - Seals arrive on opacity and 8px, 0.85s, same curve. CQC follows by 0.14s. The scale pop is gone — that read as the morph reel.
 - Seals then stay still. They no longer shrink when the pathways appear.
 - Pathways at 2.0s (a hold long enough to read both regulators), 0.6s, 8px.
-- Paper leaves at 3.7s over 0.7s. The rule starts on that beat.
-- Open ends at 4.4s. Session once. Skip and Escape clear the remaining timers so the paper cannot return.
+- Paper leaves at 3.7s over 0.7s.
+- Open ends at 4.4s. The rule starts then, on the clear hero. A playback with the rule running under the fading sheet showed the line already near full length before the page was readable, so the inscription now begins as the paper finishes leaving. Skip and Escape still draw the rule immediately, and they clear the remaining timers so the paper cannot return.
 
 ## Untouched
 
