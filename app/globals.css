@@ -849,7 +849,7 @@ html[data-open="play"] .pathway-open {
 .pathway-open.is-exit {
   opacity: 0;
   pointer-events: none;
-  transition: opacity 0.8s ease;
+  transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .open-inner {
@@ -877,12 +877,6 @@ html[data-open="play"] .pathway-open {
   display: grid;
   grid-template-columns: 1.4fr 0.8fr;
   gap: 0.8rem;
-  transition: transform 0.7s ease;
-}
-
-.pathway-open.is-paths .seals,
-.pathway-open.is-exit .seals {
-  transform: translateY(-6px) scale(0.98);
 }
 
 .seal-lg {
@@ -925,14 +919,16 @@ html[data-open="play"] .pathway-open {
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 0.7rem;
   opacity: 0;
-  transform: translateY(12px);
+  transform: translateY(8px);
 }
 
 .pathway-open.is-paths .paths,
 .pathway-open.is-exit .paths {
   opacity: 1;
   transform: none;
-  transition: opacity 0.7s ease, transform 0.7s ease;
+  transition:
+    opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .path-tile {
@@ -960,26 +956,74 @@ html[data-open="play"] .pathway-open {
 
 @media (prefers-reduced-motion: no-preference) {
   html[data-open="play"] .seal-lg {
-    animation: seal-in 1.5s ease both;
+    animation: seal-in 0.85s cubic-bezier(0.22, 1, 0.36, 1) both;
   }
 
   html[data-open="play"] .seal-lg.cqc {
-    animation-delay: 0.12s;
+    animation-delay: 0.14s;
+  }
+
+  html.js[data-rule="wait"] .hero .rule {
+    transform: scaleX(0);
+    transform-origin: left center;
+  }
+
+  html.js[data-rule="draw"] .hero .rule {
+    transform-origin: left center;
+    animation: rule-inscribe 0.72s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  .js .ledger li {
+    opacity: 0;
+    transform: translateY(4px);
+    transition:
+      opacity 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+      transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .js .ledger.in li {
+    opacity: 1;
+    transform: none;
+  }
+
+  .js .ledger.in li:nth-child(1) {
+    transition-delay: 0.04s;
+  }
+
+  .js .ledger.in li:nth-child(2) {
+    transition-delay: 0.11s;
+  }
+
+  .js .ledger.in li:nth-child(3) {
+    transition-delay: 0.18s;
+  }
+
+  .js .ledger.in li:nth-child(4) {
+    transition-delay: 0.25s;
+  }
+
+  .js .ledger.in li:nth-child(5) {
+    transition-delay: 0.32s;
   }
 }
 
 @keyframes seal-in {
-  0% {
+  from {
     opacity: 0;
-    transform: scale(0.94);
+    transform: translateY(8px);
   }
-  55% {
+  to {
     opacity: 1;
-    transform: scale(1);
+    transform: none;
   }
-  100% {
-    opacity: 1;
-    transform: scale(1);
+}
+
+@keyframes rule-inscribe {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
   }
 }
 
